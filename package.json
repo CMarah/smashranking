@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.17.1",
     "isomorphic-fetch": "^2.2.1",
-    "trueskill": "0.0.2"
+    "mongoose": "^5.9.2",
+    "smashgg.js": "^4.1.10",
+    "trueskill": "0.0.2",
+    "ts-trueskill": "^2.5.4"
   },
   "devDependencies": {},
   "scripts": {
