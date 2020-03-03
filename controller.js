@@ -7,7 +7,7 @@ const savePlayer = async player => {
   if (await playerExists(player.name)) return {
     error: 'Player with same name already exists'
   };
-  console.log(player);
+  console.log('Saved player', player.name);
   return (new models.players(player)).save();
 }
 
@@ -20,6 +20,10 @@ const updatePlayers = async set => {
   //TODO check it isn't a dq
   const player_1 = await models.players.findOne({ name: set.p1_name });
   const player_2 = await models.players.findOne({ name: set.p2_name });
+  if (!player_1 || !player_2) {
+    console.log('could not find:', set.p1_name, set.p2_name);
+    return { error: 'Did not find players' };
+  }
   const p1 = new Rating(player_1.ts_avg, player_1.ts_sig);
   const p2 = new Rating(player_2.ts_avg, player_2.ts_sig);
   const [ new_p1, new_p2 ] = rate_1vs1(
